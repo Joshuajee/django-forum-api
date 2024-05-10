@@ -1,11 +1,12 @@
 from rest_framework import serializers
 from .models import Topic, Comments
+from django.contrib.auth.models import User
 
 class TopicSerilizers(serializers.ModelSerializer):
     
     class Meta:
         model = Topic
-        fields = ["author", "title", "content", "views"]
+        fields = ["id","author", "title", "content", "views"]
     
     
 class CommentsSerilizers(serializers.ModelSerializer):
@@ -14,3 +15,9 @@ class CommentsSerilizers(serializers.ModelSerializer):
         model = Comments
         fields = "__all__"
     
+    
+class UserSerilizer(serializers.ModelSerializer):
+    
+    class Meta:
+        model = User
+        fields = ["id", "first_name", "last_name", "username", "email"]
